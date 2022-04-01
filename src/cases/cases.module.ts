@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf, Type } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MatDialogModule } from '@angular/material';
@@ -50,7 +50,7 @@ import { PriorityFieldComponentModule } from '../work-allocation-2/components/pr
 @NgModule({
   imports: [
     CommonModule,
-    CaseUIToolkitModule,
+    CaseUIToolkitModule.forRoot(AppConfig as Type<AbstractAppConfig>),
     CreateCaseFiltersModule,
     SearchResultModule,
     HttpClientModule,
@@ -82,10 +82,6 @@ import { PriorityFieldComponentModule } from '../work-allocation-2/components/pr
     RouterHelperService,
     DocumentManagementService,
     RequestOptionsBuilder,
-    {
-      provide: AbstractAppConfig,
-      useExisting: AppConfig
-    },
     ScrollToService,
     ...fromServices.services,
     CreateCaseEventTriggerResolver,

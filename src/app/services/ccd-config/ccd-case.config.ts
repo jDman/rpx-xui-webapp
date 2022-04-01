@@ -11,7 +11,9 @@ import { AppConfigService } from '../config/configuration.services';
  * is explained why this is needed
  */
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppConfig extends AbstractAppConfig {
   public workallocationUrl: string;
   protected config: CaseEditorConfig;
